@@ -12,16 +12,11 @@
 // strings are STL containers and therefore supports 
 // iterators, sorting, searching 
 
-// You can provide the string and their start index and length .append(string, int, int)
-// You can provide the frequency and the character / string to append, .append(10, "LOL")
-
-
-
-
 
 #include<string>
 #include<iostream>
 #include<vector>
+#include<algorithm>
 
 using namespace std;
 
@@ -34,11 +29,18 @@ int main() {
     int num = stoi("3699");
 
     // substr(start index, length) will return you the string 
+    // if length is longer than the max length of the string then no problem 
+    
     string name = "shiva sai krishna";
     string first = name.substr(0, 5);
+    string full_name = name.substr();
+    string last_name = name.substr(10);
+
+    cout << first << " " << last_name << endl;
 
     // replace will first erase characters of length starting from the index and then add the string at that place
-    // replace(start index, length, string) 
+    // replace(start index, length, string)
+    // It can be thought of as a combination of erase and append 
     string rename = name.replace(0,5,"Avani");
     
     // erace (start index, length) will remove the chars
@@ -47,6 +49,7 @@ int main() {
     name.erase(0);
     
     // insert (start index, string) allows insertion at a particular index
+    // There are no other overloads
     name.insert(0, "shiva ");
 
     // add a string / character into an existing string using the += operator (without copy)
@@ -67,17 +70,35 @@ int main() {
     // find() can be used to search for a string in another string and return the first index
     // rfind() will do the same but will give you the index of last occurace
     // find(pattern, start index of pattern, length of pattern)
+    // Here 5 means how many characters in the pattern
 
-    if (name.find("tokal",0, 5) == string::npos)
-        cout << "GUY not found" << endl;
+    int ind;
+    // return the index of first occurance of tokal from the left
+    ind = name.find("tokal");
+
+    // Search starting from the index 5 of name
+    ind = name.find("tokal", 5);
+
+    // Search starting from the index 5 of name, also only count the first 2 characters of tokal so, to
+    ind = name.find("tokal", 5, 2);
+
+
+    // You can use -1 or string::npos
+    if (ind == -1) 
+        cout << "NOT FOUND" << endl;
     else 
         cout << "FOUND" << endl;
-
 
     // find_first_of(chars) and find_last_of(chars) finds the chars in the string
     // if found returns its index 
     string random = "0123456789";
     int index = random.find_first_of("369");
     cout << "A char from 369 found at position : " << index << endl;
+
+
+    // Sort a string 
+    random = "025341";
+    sort(random.begin(), random.end());
+    cout << random << endl;
 
 }
