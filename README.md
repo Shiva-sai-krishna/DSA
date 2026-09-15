@@ -40,6 +40,39 @@ and run it using : .\test.exe
 Commit using the branch icon (this stages all the changes)
 
 
+# Commands for Set up for Github on Linux : 
+# Star by installing GIT and Configuring it with your creds :
+
+sudo apt update
+sudo apt upgrade
+sudo apt install git
+
+git config --global user.name "Shiva-sai-krishna"
+git config --global user.email "shivakrishnaanand@gmail.com"
+
+
+# Create the Key, Then press enter and display the key 
+
+ssh-keygen -t ed25519 -C "shivakrishnaanand@gmail.com"
+<ENTER>
+cat ~/.ssh/id_ed25519.pub
+
+
+# copy and paste the entire line (along with the mail id) in the Profile → Settings → SSH and GPG keys → New SSH key and give it a name like ubuntu
+
+# Login using the terminal SSH 
+ssh -T git@github.com
+
+
+# download the official deb file from the vs code page : https://code.visualstudio.com/download?utm_source=chatgpt.com
+
+sudo apt install ./<the file name here >.deb
+
+# create a new folder locally in home where you want to store the copy of repo
+git clone git@github.com:Shiva-sai-krishna/DSA.git
+code .
+
+
 
 
 
